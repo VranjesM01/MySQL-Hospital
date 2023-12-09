@@ -1,0 +1,93 @@
+INSERT INTO bolnica.bolnica (id_bolnice, ime_bolnice, broj_telefona, ulica)
+VALUES (1, 'Vuk Karadzic','063123123','Vuk Karadzica 22');
+
+INSERT INTO bolnica.bolnica (id_bolnice, ime_bolnice, broj_telefona, ulica)
+VALUES (2, 'Jovan Jovanovic Zmaj','063222333','Jovana Jovanovica 42');
+
+INSERT INTO bolnica.struka (id_struke, naziv)
+VALUES (1, 'Kardiolog');
+
+INSERT INTO bolnica.struka (id_struke, naziv)
+VALUES (2, 'Fizijatar');
+
+INSERT INTO bolnica.lekar (jmbg, ime, prezime, email, broj_telefona, id_bolnice, id_struke)
+VALUES ('1204336500353', 'Marko', 'Markovic', 'markomarkovic@gmail.com', '063556424', 1, 1);
+
+INSERT INTO bolnica.lekar (jmbg, ime, prezime, email, broj_telefona, id_bolnice, id_struke)
+VALUES ('1905246674564', 'Milana', 'Milanovic', 'milanamilanovic@gmail.com', '065363005', 1, 2);
+
+INSERT INTO bolnica.lekar (jmbg, ime, prezime, email, broj_telefona, id_bolnice, id_struke)
+VALUES ('2201246647462', 'Milos', 'Milosevic', 'milosmilosevic@gmail.com', '066342235', 1, 1);
+
+INSERT INTO bolnica.pacijent (jmbg, ime, prezime, broj_telefona, adresa, id_lekara)
+VALUES ('2505241253325','Jovan','Miletic','069231412', 'Kralja Petra 5','1204336500353');
+
+INSERT INTO bolnica.pacijent (jmbg, ime, prezime, broj_telefona, adresa, id_lekara)
+VALUES ('1111352500035','Elena','Jovic','066435351', 'Svetojovanska 22','1905246674564');
+
+INSERT INTO bolnica.pacijent (jmbg, ime, prezime, broj_telefona, adresa, id_lekara)
+VALUES ('1704005346145','Kristina','Todorovic','065352553','Bulevar Oslobodjenja 2','1905246674564');
+
+INSERT INTO bolnica.pregled (id_pregleda, datum, dijagnoza, vreme, id_lekara, id_pacijenta)
+VALUES (1,'01-10-2023', 'Povremena tahikardija','12:10:00','1204336500353','2505241253325');
+
+INSERT INTO bolnica.pregled (id_pregleda, datum, dijagnoza, vreme, id_lekara, id_pacijenta)
+VALUES (2,'11-01-2023', 'Pocetna faza skolioze','17:22:00','1905246674564','1111352500035');
+
+INSERT INTO bolnica.pregled (id_pregleda, datum, dijagnoza, vreme, id_lekara, id_pacijenta)
+VALUES (3,'04-12-2023', 'Bol u sredini grudnog kosa','08:35:00','2201246647462','1704005346145');
+
+INSERT INTO bolnica.bolnicka_soba(id_sobe, broj_kreveta, id_bolnice)
+VALUES (1, 4,1);
+
+INSERT INTO bolnica.bolnicka_soba(id_sobe, broj_kreveta, id_bolnice)
+VALUES (2, 2,1);
+
+INSERT INTO bolnica.bolnicka_soba(id_sobe, broj_kreveta, id_bolnice)
+VALUES (3, 6,1);
+
+INSERT INTO bolnica.boravak(id_boravka, razlog, od, "do", id_pacijenta, id_bolnicke_sobe)
+VALUES (1, 'Pacijent je zadrzan zbog povremenih nesvestica', '20-10-2023', '22-10-2023', '2505241253325',1);
+
+INSERT INTO bolnica.boravak(id_boravka, razlog, od, "do", id_pacijenta, id_bolnicke_sobe)
+VALUES (3, 'Bolovi u predelu vrata', '2023-07-08', '2024-01-02', '1905246674564',2);
+
+
+INSERT INTO bolnica.boravak(id_boravka, razlog, od, "do", id_pacijenta, id_bolnicke_sobe)
+VALUES (2, 'Pacijent prijavljuje jake bolove u donjem delu ledja', '01-02-2023', '02-02-2023', '1111352500035',3);
+
+INSERT INTO bolnica.radno_mesto(id_radnog_mesta, ime_radnog_mesta)
+VALUES (1, 'Portir');
+
+INSERT INTO bolnica.radno_mesto(id_radnog_mesta, ime_radnog_mesta)
+VALUES (2, 'Spremacica');
+
+INSERT INTO bolnica.radno_mesto(id_radnog_mesta, ime_radnog_mesta)
+VALUES (3, 'Domar');
+
+INSERT INTO bolnica.dodatno_osoblje(jmbg, ime, prezime, broj_telefona, email, id_bolnice, id_radnog_mesta)
+VALUES ('0222535670032', 'Mirko', 'Mirkovic', '064323301','mirkomirkovic@gmail.com',1,3);
+
+INSERT INTO bolnica.dodatno_osoblje(jmbg, ime, prezime, broj_telefona, email, id_bolnice, id_radnog_mesta)
+VALUES ('1003222144422', 'Nemanja', 'Milutinovic', '061224251','nemanjamilutinovic@gmail.com',1,1);
+
+INSERT INTO bolnica.vozilo_hitne_pomoci(tablice, godiste, predjena_kilometraza, id_bolnice)
+VALUES ('NS-139-ZX',2015, 130000,1);
+
+INSERT INTO bolnica.vozilo_hitne_pomoci(tablice, godiste, predjena_kilometraza, id_bolnice)
+VALUES ('BG-002-AG',2020, 20000,1);
+
+INSERT INTO bolnica.dezurni_lekar(jmbg, broj_telefona, ime, prezime, id_vozila)
+VALUES (12002301,'061224135', 'Sava','Peric','NS-139-ZX');
+
+INSERT INTO bolnica.dezurni_lekar(jmbg, broj_telefona, ime, prezime, id_vozila)
+VALUES (11124111,'063343533', 'Miona','Maksic','BG-002-AG');
+
+INSERT INTO bolnica.teren(id_terena, vreme_polaska, vreme_dolaska, dijagnoza, ime_pacijenta, prezime_pacijenta,id_vozila)
+VALUES(1,'11:40:00', '12:00:00', 'Pacijentu je pozlilo', 'Dusan', 'Simic','NS-139-ZX');
+
+INSERT INTO bolnica.teren(id_terena, vreme_polaska, vreme_dolaska, dijagnoza, ime_pacijenta, prezime_pacijenta,id_vozila)
+VALUES(2,'20:10:00', '20:35:00', 'Prelom ruke', 'Jana', 'Janovic','BG-002-AG');
+
+INSERT INTO bolnica.teren(id_terena, vreme_polaska, vreme_dolaska, dijagnoza, ime_pacijenta, prezime_pacijenta,id_vozila)
+VALUES(3,'15:15:00', '16:00:00', 'Povisen krvni pritisak', 'Miona', 'Mionic','BG-002-AG');
